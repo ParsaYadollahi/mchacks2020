@@ -3,7 +3,20 @@ import mocks
  
 mockDict = {
 	'2/5' : mocks.R25,
-	'callhome' : mocks.callhome
+	'callhome' : mocks.callhome,
+	'Noc101' : mocks.Noc101,
+	'cdpall' : mocks.cdpall,
+	'cdpneighbors' : mocks.cdpneighbors,
+	'cfsapplication' : mocks.cfsapplication,
+	'cfsapplicationcallhome' : mocks.cfsapplicationcallhome,
+	'cfslockcallhome' : mocks.cfslockcallhome,
+	'cfsregionsbrief' : mocks.cfsregionsbrief,
+	'cfsregionsregion 4' : mocks.cfsregionsregion4,
+	'cfsstatus' : mocks.cfsstatus,
+	'checkpointstable' : mocks.checkpointstable,
+	'configurationsessionmyACLs' : mocks.configurationsessionmyACLs,
+	'configurationsessionstatus' : mocks.configurationsessionstatus,
+	'configurationsessionsummary' : mocks.configurationsessionsummary
 }
 #add commands by following this format:
 # from cmd import Cmd
@@ -52,19 +65,40 @@ class MyPrompt(Cmd):
 
 	def do_cdpshowneighbors(self, inp):
 		if(inp == ''):
-			print(mockDict.get('cdpneighbors'))
+			print(mockDict.get('cdpneighbors'))					
 
-	def do_cfsapplication(self, inp):
-		if(inp == ''):
+	def do_cfsregions(self, inp):
+		'''try brief or region 4'''
+		if(inp in {'brief', 'region 4'}):
+			print(mockDict.get('cfsregions'+inp))
+
+	def do_cfs(self, inp):
+		if(inp == 'status'):
+			print(mockDict.get('cfsstatus'))
+		if(inp == 'application'):
 			print(mockDict.get('cfsapplication'))
-
-	def do_cfsapplicationcallhome(self, inp):
-		if(inp == ''):
+		if(inp == 'application name callhome'):
 			print(mockDict.get('cfsapplicationcallhome'))
-
-	def do_cfslockcallhome(self, inp):
-		if(inp == ''):
+		if(inp == 'lock name callhome'):
 			print(mockDict.get('cfslockcallhome'))
+		if(inp == 'peers name callhome'):
+			print(mockDict.get('cfspeerscallhome'))
+
+	def do_checkpoint(self, inp):
+		if(inp == 'stable'):
+			print(mockDict.get('checkpointstable'))
+
+	def do_configuration(self, inp):
+		if(inp == 'session myACLS'):
+			print(mockDict.get('configurationsessionmyACLs'))
+		if(inp == 'session status'):
+			print(mockDict.get('configurationsessionstatus'))
+		if(inp == 'session summary'):
+			print(mockDict.get('configurationsessionsummary'))
+
+
+
+
 
 	def do_config(self, inp):
 		pass

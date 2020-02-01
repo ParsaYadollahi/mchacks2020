@@ -1,0 +1,14 @@
+devices:
+  mymock:
+    connections:
+      linux:
+        command: "ssh -p 2222 root@localhost -t 'python3 /mock_device/shell.py mymock'"
+        init_exec_commands: []
+        init_config_commands: []
+    os: nxos
+    type: nxos
+    credentials:
+      default:
+        username: root
+        password: root
+      

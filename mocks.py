@@ -1,4 +1,4 @@
-R25 = """Ethernet2/5 is down (SFP not inserted)
+R25 = """Ethernet2 is down (SFP not inserted)
 admin state is down, Dedicated Interface
   Hardware: 1000/10000 Ethernet, address: xxxxxxxxxx (bia xxxxxxxxxxx)
   MTU 1500 bytes, BW 10000000 Kbit, DLY 10 usec

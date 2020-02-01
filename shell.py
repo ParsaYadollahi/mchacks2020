@@ -1,8 +1,9 @@
 from cmd import Cmd
 import mocks
- 
+import argparse
+
 mockDict = {
-	'2/5' : mocks.R25,
+	'interface ethernet2' : mocks.R25,
 	'callhome' : mocks.callhome,
 	'Noc101' : mocks.Noc101,
 	'cdpall' : mocks.cdpall,
@@ -44,9 +45,9 @@ class MyPrompt(Cmd):
 	def do_Input(self, inp):
 		print(inp)
 
-	def do_showInterface(self, inp):
+	def do_show(self, inp):
 		#add other ok instances of inputs, this is so that putting showInterface noc101 returns an error instead of the noc101 text
-		if(inp == '2/5'):
+		if(inp == 'interface ethernet2'):
 			print(mockDict.get(inp))
 
 	def do_callhome(self, inp):
@@ -109,8 +110,18 @@ class MyPrompt(Cmd):
 
 	do_EOF = do_exit
 
- 
-MyPrompt().cmdloop()
+if __name__ == "__main__":
+	parser = argparse.ArgumentParser(description='mock device driver')
+	parser.add_argument('hostname',
+						metavar='[extra]',
+						type=str,
+						nargs='?',
+						help='hostname of the mock device')
+
+	args = parser.parse_args()
+	p = MyPrompt()
+	p.prompt='{}#'.format(args.hostname)
+	p.cmdloop()
 
 
 
